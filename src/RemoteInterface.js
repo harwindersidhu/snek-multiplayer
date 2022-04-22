@@ -56,6 +56,9 @@ class RemoteInterface {
   handleNewClient(client) {
     // process.stdout.write('\x07')
     client.setEncoding('utf8')
+    for (let cl of this.clients) {
+      cl.write("New Client Added");
+    }
     this.clients.push(client)
     this.resetIdleTimer(client, MAX_IDLE_TIMEOUT / 2)
 
